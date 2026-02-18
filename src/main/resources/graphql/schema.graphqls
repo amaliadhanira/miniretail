@@ -1,0 +1,65 @@
+type Query{
+    customerById(id: ID!): CustomerProfile
+    customers: [CustomerProfile]!
+}
+
+type Mutation{
+    createCustomer(input: customerInput!): CustomerProfile
+    updateCustomer(input: editCustomer!): CustomerProfile
+    deleteCustomer(id: ID!): DeleteResponse!
+    login(input: login!): CustomerProfile!
+}
+
+input customerInput{
+    email: String!
+    password: String!
+    firstName: String!
+    lastName: String!
+    profilePict: String
+}
+
+input login{
+    email: String!
+    password: String!
+}
+
+input editCustomer{
+    password: String!
+    profilePict: String
+}
+
+type CustomerResponse{
+    status: Status!
+}
+
+type LoginResponse{
+    status: Status!
+}
+
+type CustomerNotFound{
+    id: ID!
+    message: String
+}
+
+type CustomerProfile{
+    id: String!
+    email: String!
+    password: String!
+    firstName: String!
+    lastName: String!
+    profilePict: String
+}
+
+type LoginFailed {
+    message: String!
+}
+
+type DeleteResponse{
+    id: ID!,
+    status: Status
+}
+
+enum Status{
+    SUCCESS
+    FAILURE
+}
