@@ -2,12 +2,9 @@ package com.miniproject.miniretail.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class LoginResponse {
-    private String token;
+public class EditResponse {
     private Status status;
 }

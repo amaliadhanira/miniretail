@@ -38,18 +38,14 @@
         email: "jane.doe@example.com",
         password: "securePassword123"
       }) {
-        id
-        email
-        firstName
-        lastName
-        profilePict
+        status
       }
     }
 
   2. [POST] http://localhost:8080/graphql
 
       {
-        "query": "mutation Login($input: login!) { login(input: $input) { id email firstName lastName profilePict } }",
+        "query": "mutation Login($input: login!) { login(input: $input) { status} }",
         "variables": {
           "input": {
             "email": "jane.doe@example.com",

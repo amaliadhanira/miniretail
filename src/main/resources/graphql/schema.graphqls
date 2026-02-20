@@ -5,9 +5,9 @@ type Query{
 
 type Mutation{
     createCustomer(input: customerInput!): CustomerProfile
-    updateCustomer(input: editCustomer!): CustomerProfile
+    updateCustomer(id: String!, customer: editCustomer!): editResponse
     deleteCustomer(id: ID!): DeleteResponse!
-    login(input: login!): CustomerProfile!
+    login(input: login!): LoginResponse!
 }
 
 input customerInput{
@@ -24,7 +24,8 @@ input login{
 }
 
 input editCustomer{
-    password: String!
+    email: String
+    password: String
     profilePict: String
 }
 
@@ -33,12 +34,18 @@ type CustomerResponse{
 }
 
 type LoginResponse{
-    status: Status!
+    token: String!
+    status: Status
 }
 
 type CustomerNotFound{
     id: ID!
     message: String
+}
+
+type editResponse{
+    id: ID!
+    status: Status
 }
 
 type CustomerProfile{
